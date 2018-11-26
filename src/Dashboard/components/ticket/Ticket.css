@@ -1,0 +1,7 @@
+.Ticket {
+    height: 100px;
+    width: 100px;
+    border: 2px solid #254345;
+    background-color: #fff;
+    color: #3e3e3e;
+}
