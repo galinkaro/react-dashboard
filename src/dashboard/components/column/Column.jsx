@@ -1,11 +1,13 @@
 import React from 'react';
-import Ticket from '../ticket/Ticket'
+import Ticket from '../ticket/Ticket';
 import './Column.css';
 
-const Column = () => (
+const Column = (props) => (
     <div className="column">
-        <p className="column__title">Column title</p>
-        <Ticket />
+        <p className="column__title">{props.title}</p>
+        {props.tickets.map((item, index) => (
+            <Ticket key={index} { ...item } />
+        ))}
     </div>
 );
 

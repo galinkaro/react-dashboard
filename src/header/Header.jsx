@@ -1,5 +1,18 @@
 import React from 'react';
+import _random from 'lodash/random';
+import store from '../index';
 import './Header.css';
+
+function handleButtonClick() {
+    store.dispatch({
+        type: 'ADD_NEW_TICKET',
+        ticket: {
+            title: 'Create new page',
+            status: 'To do',
+            id: _random(100)
+        }
+    });
+}
 
 const Header = () => (
     <div className="header">
@@ -23,7 +36,7 @@ const Header = () => (
                 <span>Boards</span>
                 <i className="material-icons">arrow_drop_down</i>
             </div>
-            <button>Create</button>
+            <button onClick={handleButtonClick}>Create</button>
         </div>
         <div className="header-right">
             <input placeholder="Search" type="text"/>

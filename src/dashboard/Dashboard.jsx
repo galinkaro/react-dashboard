@@ -1,6 +1,7 @@
 import React from 'react';
-import Header from '../header/Header'
-import Column from './components/column/Column'
+import Header from '../header/Header';
+import Column from './components/column/Column';
+import { connect } from 'react-redux';
 import './Dashboard.css';
 
 class Dashboard extends React.Component {
@@ -9,11 +10,35 @@ class Dashboard extends React.Component {
             <div className="dashboard-wrapper">
                 <Header />
                 <div className="columns">
-                    <Column />
+                    <Column title="To do"
+                            tickets={this.props.items}
+                    />
+                    <Column title="In progress"
+                            tickets={[]}
+                    />
+                    <Column title="Done"
+                            tickets={[]}
+                    />
                 </div>
             </div>
         )
     }
 }
 
-export default Dashboard;
+
+function mapStateToProps(state) {
+    return {
+        items: state.dashboard.tickets
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Dashboard);
