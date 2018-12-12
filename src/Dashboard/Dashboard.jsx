@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../header/Header'
-import Ticket from './components/ticket/Ticket'
+import Column from './components/column/Column'
 import './Dashboard.css';
 
 class Dashboard extends React.Component {
@@ -8,7 +8,9 @@ class Dashboard extends React.Component {
         return (
             <div className="dashboard-wrapper">
                 <Header />
-                <Ticket />
+                <div className="columns">
+                    <Column />
+                </div>
             </div>
         )
     }

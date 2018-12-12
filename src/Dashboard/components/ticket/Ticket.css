@@ -1,7 +1,18 @@
-.Ticket {
-    height: 100px;
-    width: 100px;
-    border: 2px solid #254345;
-    background-color: #fff;
+.ticket {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 2px;
+    background-color: #f2f2f2;
     color: #3e3e3e;
+    cursor: move;
+}
+
+.ticket__title {
+    text-align: left;
+    margin-bottom: 7px;
+}
+
+.ticket__info {
+    display: flex;
+    justify-content: space-around;
 }

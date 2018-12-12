@@ -1,0 +1,19 @@
+.column {
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+	height: 100%;
+	width: 160px;
+	margin: 10px;
+	background-color: #737373;
+	color: #000;
+}
+
+.column .column__title {
+	margin: 0 auto;
+	padding: 0 10px;
+	color: #f4f5f7;
+	font-weight: 600;
+	text-align: left;
+	text-transform: uppercase;
+}
