@@ -1,8 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Header from '../header/Header';
 import Column from './components/column/Column';
-import { connect } from 'react-redux';
-import './Dashboard.css';
+import './Dashboard.scss';
 
 class Dashboard extends React.Component {
     render() {
@@ -24,7 +24,6 @@ class Dashboard extends React.Component {
         )
     }
 }
-
 
 function mapStateToProps(state) {
     return {

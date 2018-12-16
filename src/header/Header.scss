@@ -1,0 +1,39 @@
+.header {
+    display: flex;
+    background-color: #cf3a3a;
+    padding: .3em;
+
+    * {
+        display: inline-flex;
+        cursor: pointer;
+    }
+
+    .header-left,
+    .header-right {
+        width: 50%;
+
+        .header__element,
+        button,
+        input {
+            padding: 0 0.5em;
+        }
+    }
+
+    .header-right {
+        justify-content: flex-end;
+
+        input[type="text"] {
+            cursor: auto;
+        }
+    }
+}
+
+.submenu {
+    ul {
+        padding: 0;
+
+        li {
+            color: #cf3a3a;
+        }
+    }
+}
