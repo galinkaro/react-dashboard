@@ -1,30 +1,22 @@
 import React from 'react';
-import _random from 'lodash/random';
 import Avatar from 'react-avatar';
+import _random from 'lodash/random';
+import { connect } from 'react-redux';
 import Menu from '@material-ui/core/Menu';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
 import MenuItem from '@material-ui/core/MenuItem';
-import store from '../index';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import NewTicket from '../dashboard/components/new-ticket/NewTicket';
 import './Header.scss';
-
-function handleButtonClick() {
-    store.dispatch({
-        type: 'ADD_NEW_TICKET',
-        ticket: {
-            title: 'Create new page',
-            status: 'To do',
-            id: _random(100)
-        }
-    });
-}
 
 const customColors = [
     '#E55D4A',
     '#E88554',
+    '#7D323B',
     '#4194A6',
-    '#82CCD9',
     '#FFCC6B',
     '#F2855C',
-    '#7D323B',
     '#56657C',
     '#827a78',
     '#6f6a91'
@@ -33,14 +25,24 @@ const customColors = [
 class Header extends React.Component {
     state = {
         anchorEl: null,
+        open: false
     };
 
-    handleClick = event => {
+    openProjects = event => {
         this.setState({ anchorEl: event.currentTarget });
     };
 
+    openNewTicketDialog = () => {
+        this.setState({ open: true });
+    };
+
     handleClose = () => {
-        this.setState({ anchorEl: null });
+        this.setState({ anchorEl: null, open: false });
+    };
+
+    onSubmit = (data) => {
+        this.props.createNewTicket(data.title);
+        this.handleClose();
     };
 
     render(){
@@ -56,7 +58,7 @@ class Header extends React.Component {
                         <i className="material-icons">layers</i>
                         <span>JIRA</span>
                     </div>
-                    <div className="header__element" onClick={this.handleClick}>
+                    <div className="header__element" onClick={this.openProjects}>
                         <span>Projects</span>
                         <i className="material-icons">arrow_drop_down</i>
                     </div>
@@ -75,7 +77,14 @@ class Header extends React.Component {
                         <span>Boards</span>
                         <i className="material-icons">arrow_drop_down</i>
                     </div>
-                    <button onClick={handleButtonClick}>Create</button>
+                    <Button variant="outlined" color="inherit" size="small" fullWidth onClick={this.openNewTicketDialog}>Create</Button>
+                    <Dialog
+                        open={this.state.open}
+                        onClose={this.handleClose}
+                        aria-labelledby="simple-dialog-title">
+                        <DialogTitle id="simple-dialog-title">New ticket</DialogTitle>
+                        <NewTicket onSubmit={this.onSubmit} />
+                    </Dialog>
                 </div>
                 <div className="header-right">
                     <input placeholder="Search" type="text"/>
@@ -84,7 +93,7 @@ class Header extends React.Component {
                         <i className="material-icons">arrow_drop_down</i>
                     </div>
                     <div className="header__element">
-                        <Avatar name="Galinka Rogach" size="30" round={true} textSizeRatio="1.75"
+                        <Avatar name="Galinka Rogach" size="30" round={true} textSizeRatio={1.75}
                                 color={Avatar.getRandomColor('Galinka Rogach', customColors)}/>
                         <i className="material-icons">arrow_drop_down</i>
                     </div>
@@ -94,4 +103,20 @@ class Header extends React.Component {
     }
 }
 
-export default Header;
+function mapDispatchToProps(dispatch) {
+    return {
+        createNewTicket:(title) => dispatch({
+            type: 'ADD_NEW_TICKET',
+            ticket: {
+                title: title,
+                status: 'To do',
+                id: _random(100)
+            }
+        })
+    }
+}
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(Header);
