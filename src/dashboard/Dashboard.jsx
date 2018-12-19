@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Header from '../header/Header';
+import Header from './components/header/Header';
 import Column from './components/column/Column';
 import './Dashboard.scss';
 

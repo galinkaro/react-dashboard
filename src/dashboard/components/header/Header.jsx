@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import MenuItem from '@material-ui/core/MenuItem';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import NewTicket from '../dashboard/components/new-ticket/NewTicket';
+import NewTicket from '../new-ticket/NewTicket';
 import './Header.scss';
 
 const customColors = [
@@ -24,12 +24,17 @@ const customColors = [
 
 class Header extends React.Component {
     state = {
-        anchorEl: null,
+        projects: null,
+        profile: null,
         open: false
     };
 
     openProjects = event => {
-        this.setState({ anchorEl: event.currentTarget });
+        this.setState({ projects: event.currentTarget });
+    };
+
+    openProfile = event => {
+        this.setState({ profile: event.currentTarget });
     };
 
     openNewTicketDialog = () => {
@@ -37,7 +42,11 @@ class Header extends React.Component {
     };
 
     handleClose = () => {
-        this.setState({ anchorEl: null, open: false });
+        this.setState({
+            projects: null,
+            profile: null,
+            open: false
+        });
     };
 
     onSubmit = (data) => {
@@ -46,7 +55,7 @@ class Header extends React.Component {
     };
 
     render(){
-        const { anchorEl } = this.state;
+        const { projects, profile } = this.state;
 
         return (
             <div className="header">
@@ -63,8 +72,8 @@ class Header extends React.Component {
                         <i className="material-icons">arrow_drop_down</i>
                     </div>
                     <Menu className="submenu"
-                          anchorEl={anchorEl}
-                          open={Boolean(anchorEl)}
+                          anchorEl={projects}
+                          open={Boolean(projects)}
                           onClose={this.handleClose}>
                         <MenuItem onClick={this.handleClose}>Project A</MenuItem>
                         <MenuItem onClick={this.handleClose}>Project B</MenuItem>
@@ -77,7 +86,7 @@ class Header extends React.Component {
                         <span>Boards</span>
                         <i className="material-icons">arrow_drop_down</i>
                     </div>
-                    <Button variant="outlined" color="inherit" size="small" fullWidth onClick={this.openNewTicketDialog}>Create</Button>
+                    <Button variant="outlined" color="inherit" size="small" onClick={this.openNewTicketDialog}>Create</Button>
                     <Dialog
                         open={this.state.open}
                         onClose={this.handleClose}
@@ -92,11 +101,18 @@ class Header extends React.Component {
                         <i className="material-icons">settings</i>
                         <i className="material-icons">arrow_drop_down</i>
                     </div>
-                    <div className="header__element">
+                    <div className="header__element" onClick={this.openProfile}>
                         <Avatar name="Galinka Rogach" size="30" round={true} textSizeRatio={1.75}
                                 color={Avatar.getRandomColor('Galinka Rogach', customColors)}/>
                         <i className="material-icons">arrow_drop_down</i>
                     </div>
+                    <Menu className="submenu"
+                          anchorEl={profile}
+                          open={Boolean(profile)}
+                          onClose={this.handleClose}>
+                        <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                        <MenuItem onClick={this.handleClose}>Log out</MenuItem>
+                    </Menu>
                 </div>
             </div>
         )

@@ -19,10 +19,10 @@ const Ticket = (props) => (
     <div className="ticket">
         <div className="ticket__title">{props.title}</div>
         <div className="ticket__info">
+            <div className="ticket__type-icon">type</div>
+            <div className="ticket__id">{props.id}</div>
             <Avatar name="Galinka Rogach" size="30" round={true} textSizeRatio={1.75}
                     color={Avatar.getRandomColor('Galinka Rogach', customColors)}/>
-            <div className="ticket__id">{props.id}</div>
-            <div className="ticket__user-icon">user</div>
         </div>
     </div>
 );

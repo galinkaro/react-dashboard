@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../header/Header'
+import Header from '../dashboard/components/header/Header'
 
 const DetailedTicket = (props) => {
     return (

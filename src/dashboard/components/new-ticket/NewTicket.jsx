@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
+import FormInput from "../../../form-components/input/Input";
 
 class NewTicket extends React.Component {
-
     render() {
         const { handleSubmit, pristine, submitting, reset } = this.props;
 
@@ -11,12 +11,7 @@ class NewTicket extends React.Component {
             <form onSubmit={handleSubmit}>
                 <label>Title</label>
                 <div>
-                    <Field
-                        name="title"
-                        component="input"
-                        type="text"
-                        placeholder="Title"
-                    />
+                    <FormInput name="title" placeholder="Title" />
                     <button type="submit" disabled={pristine || submitting}>
                         Submit
                     </button>
