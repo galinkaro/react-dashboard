@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import Input from '@material-ui/core/Input';
+import TextField from '@material-ui/core/TextField';
 
 const FormInput = (props) => {
     return (
@@ -10,7 +10,7 @@ const FormInput = (props) => {
 
 const InputWrapper = ({ input, meta, ...props}) => {
     return (
-        <Input {...props} onChange={input.onChange} />
+        <TextField {...props} onChange={input.onChange} label={input.name} variant="outlined" margin="dense" />
     )
 };
 

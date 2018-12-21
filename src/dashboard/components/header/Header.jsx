@@ -86,7 +86,7 @@ class Header extends React.Component {
                         <span>Boards</span>
                         <i className="material-icons">arrow_drop_down</i>
                     </div>
-                    <Button variant="outlined" color="inherit" size="small" onClick={this.openNewTicketDialog}>Create</Button>
+                    <Button title="Create a new issue / bug / change request / etc" variant="outlined" color="inherit" size="small" onClick={this.openNewTicketDialog}>Create</Button>
                     <Dialog
                         open={this.state.open}
                         onClose={this.handleClose}
