@@ -34,44 +34,16 @@ const types = [
     }];
 
 class NewTicket extends React.Component {
-    state = {
-        project: ''
-    };
-
-    handleChange = name => event => {
-        this.setState({
-            [name]: event.target.value,
-        });
-    };
-
     render() {
         const { handleSubmit, pristine, submitting, reset } = this.props;
 
         return (
             <form onSubmit={handleSubmit}>
                 <div>
-                    <TextField
-                        select
-                        label="Project"
-                        required={true}
-                        value={this.state.project}
-                        onChange={this.handleChange('project')}
-                        helperText="Please select your project"
-                        margin="dense"
-                        variant="outlined"
-                    >
-                        {projects.map(option => (
-                            <MenuItem key={option.value} value={option.value}>
-                                {option.label}
-                            </MenuItem>
-                        ))}
-                    </TextField>
                     <FormInput
                         select
                         name="Project"
                         required={true}
-                        value={this.state.project}
-                        onChange={this.handleChange('project')}
                         helperText="Please, select the project"
                     >
                         {projects.map(option => (
@@ -84,8 +56,6 @@ class NewTicket extends React.Component {
                         select
                         name="Ticket type"
                         required={true}
-                        value={this.state.type}
-                        onChange={this.handleChange('type')}
                         helperText="Please, select ticket type"
                     >
                         {types.map(option => (

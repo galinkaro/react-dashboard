@@ -10,7 +10,13 @@ const FormInput = (props) => {
 
 const InputWrapper = ({ input, meta, ...props}) => {
     return (
-        <TextField {...props} onChange={input.onChange} label={input.name} variant="outlined" margin="dense" />
+        <TextField {...props}
+                   onChange={input.onChange}
+                   label={input.name}
+                   value={input.value}
+                   variant="outlined"
+                   margin="dense"
+        />
     )
 };
 
