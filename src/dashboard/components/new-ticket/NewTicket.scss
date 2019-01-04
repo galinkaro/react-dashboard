@@ -1,0 +1,28 @@
+.new-ticket {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-top: 1px solid #737373;
+
+    div {
+        min-width: 30%;
+
+        &.buttonsWrapper {
+            text-align: center;
+            margin-top: 10px;
+
+            button {
+                width: 100px;
+                margin: 0 5px;
+            }
+        }
+    }
+
+    .w50 {
+        width: 50%;
+    }
+
+    .w70 {
+        width: 70%;
+    }
+}

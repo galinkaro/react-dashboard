@@ -90,6 +90,7 @@ class Header extends React.Component {
                     <Dialog
                         open={this.state.open}
                         onClose={this.handleClose}
+                        fullWidth={true}
                         aria-labelledby="simple-dialog-title">
                         <DialogTitle id="simple-dialog-title">New ticket</DialogTitle>
                         <NewTicket onSubmit={this.onSubmit} />

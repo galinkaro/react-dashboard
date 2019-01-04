@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import { reduxForm } from 'redux-form';
 import FormInput from '../../../form-components/input/Input';
-import TextField from '@material-ui/core/TextField';
+import './NewTicket.scss';
 
 const projects = [
     {
@@ -33,46 +34,77 @@ const types = [
         label: 'Defect'
     }];
 
+const users = [
+    {
+        value: 'me',
+        label: 'Me'
+    },
+    {
+        value: 'qa',
+        label: 'some QA'
+    },
+    {
+        value: 'fe',
+        label: 'some FE'
+    },
+    {
+        value: 'pm',
+        label: 'PM'
+    }];
+
 class NewTicket extends React.Component {
     render() {
         const { handleSubmit, pristine, submitting, reset } = this.props;
 
         return (
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <FormInput
-                        select
-                        name="Project"
-                        required={true}
-                        helperText="Please, select the project"
-                    >
-                        {projects.map(option => (
-                            <MenuItem key={option.value} value={option.value}>
-                                {option.label}
-                            </MenuItem>
-                        ))}
-                    </FormInput>
-                    <FormInput
-                        select
-                        name="Ticket type"
-                        required={true}
-                        helperText="Please, select ticket type"
-                    >
-                        {types.map(option => (
-                            <MenuItem key={option.value} value={option.value}>
-                                {option.label}
-                            </MenuItem>
-                        ))}
-                    </FormInput>
-                    <FormInput name="Title" placeholder="Title" required={true} />
-                    <FormInput name="Story Points" placeholder="Title" type="number" />
-                    <FormInput name="Description" placeholder="Title" multiline rows="6" />
-                    <button type="submit" disabled={pristine || submitting}>
-                        Submit
-                    </button>
-                    <button type="button" disabled={submitting} onClick={reset}>
+            <form onSubmit={handleSubmit} className="new-ticket">
+                <FormInput
+                    select
+                    name="Project"
+                    className="w70"
+                    required={true}
+                    helperText="Please, select the project"
+                >
+                    {projects.map(option => (
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                    ))}
+                </FormInput>
+                <FormInput
+                    select
+                    name="Ticket type"
+                    className="w70"
+                    required={true}
+                    helperText="Please, select ticket type"
+                >
+                    {types.map(option => (
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                    ))}
+                </FormInput>
+                <FormInput name="Title" placeholder="Title" required={true}/>
+                <FormInput name="Story Points"
+                           className="w50"
+                           placeholder="Title"
+                           type="number"
+                />
+                <FormInput name="Description" placeholder="Title" multiline rows="6"/>
+                <FormInput select name="Assignee" className="w70">
+                    {users.map(option => (
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                    ))}
+                </FormInput>
+                <div className="buttonsWrapper">
+                    <Button type="submit" variant="contained" color="primary" disabled={pristine || submitting}>
+                        Create
+                    </Button>
+                    <Button variant="contained" disabled={submitting} onClick={reset}>
                         Cancel
-                    </button>
+                    </Button>
                 </div>
             </form>
         );
