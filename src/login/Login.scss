@@ -1,0 +1,14 @@
+.loginWrapper {
+    position: relative;
+
+    h2 {
+        color: #cf3a3a;
+    }
+
+    button {
+        position: absolute;
+        top: 20em;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
