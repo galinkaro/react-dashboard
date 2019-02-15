@@ -60,7 +60,7 @@ class NewTicket extends React.Component {
             <form onSubmit={handleSubmit} className="new-ticket">
                 <FormInput
                     select
-                    name="Project"
+                    name="project"
                     className="w70"
                     required={true}
                     helperText="Please, select the project"
@@ -73,7 +73,7 @@ class NewTicket extends React.Component {
                 </FormInput>
                 <FormInput
                     select
-                    name="Ticket type"
+                    name="type"
                     className="w70"
                     required={true}
                     helperText="Please, select ticket type"
@@ -84,14 +84,14 @@ class NewTicket extends React.Component {
                         </MenuItem>
                     ))}
                 </FormInput>
-                <FormInput name="Title" placeholder="Title" required={true}/>
-                <FormInput name="Story Points"
+                <FormInput name="title" placeholder="Title" required={true}/>
+                <FormInput name="storyPoints"
                            className="w50"
                            placeholder="Title"
                            type="number"
                 />
-                <FormInput name="Description" placeholder="Title" multiline rows="6"/>
-                <FormInput select name="Assignee" className="w70">
+                <FormInput name="description" placeholder="Title" multiline rows="6"/>
+                <FormInput select name="assignee" className="w70">
                     {users.map(option => (
                         <MenuItem key={option.value} value={option.value}>
                             {option.label}

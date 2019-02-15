@@ -50,7 +50,7 @@ class Header extends React.Component {
     };
 
     onSubmit = (data) => {
-        this.props.createNewTicket(data.title);
+        this.props.createNewTicket(data);
         this.handleClose();
     };
 
@@ -122,12 +122,13 @@ class Header extends React.Component {
 
 function mapDispatchToProps(dispatch) {
     return {
-        createNewTicket:(title) => dispatch({
+        createNewTicket:(data) => dispatch({
             type: 'ADD_NEW_TICKET',
             ticket: {
-                title: title,
+                title: data.title,
                 status: 'To do',
-                id: _random(100)
+                id: _random(100),
+                type: data.type
             }
         })
     }
